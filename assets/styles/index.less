@@ -1,0 +1,134 @@
+// Apply a natural box layout model to all elements
+// but allowing components to change
+// http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+
+@color-primary : skyblue;
+@color-black : #535c68;
+
+html, body {
+    box-sizing: border-box;
+    background-color: rgba(#f9a852, .7);
+    font-family: 'Lato', 'Arial', sans-serif;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.content {
+    background-color: rgba(#f7f7f7, .7);
+    padding: 30px 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    color: @color-black;
+    letter-spacing: 2px;
+}
+
+li {
+    list-style: none;
+    cursor: pointer;
+    padding: 2px;
+    color: @color-black;
+    position: relative;
+    height: 100%;
+    user-select: none;
+}
+
+ul {
+    position: relative;
+    padding-left: 52px;
+    border-left: 1px dashed @color-primary;
+}
+
+ul::before {
+    content: '';
+    display:table;
+    min-height: 100%;
+    width: 10px;
+    background-color: @color-primary;
+    position: absolute;
+    top: 0;
+}
+
+.rootUL {
+    min-height: 300px;   
+    border: none;
+}
+
+.root-folder::before {
+    content: '';
+    display: table;
+    background: url(/assets/images/img-folder.png) no-repeat;
+    background-size: contain;
+    width: 50px;
+    height: 20px;
+    position: absolute;
+    left: -55px;
+    top: 2px;
+    background-position: right;
+}
+
+.hide {
+    display:none;
+}
+
+.icon-plus svg {
+    width: 20px;
+    height: 20px;
+    stroke: #000000;
+    stroke-width: .4;
+}
+
+.folder,
+.file {
+    height: 27px;
+}
+
+.folder::before {
+    background: url(/assets/images/img-folder.png) no-repeat;
+    content: '';
+    display: table;
+    position: absolute;
+    width: 50px;
+    height: 27px;
+    left: -55px;
+    top: 2px;
+    border-bottom: 1px dashed @color-primary;
+
+    background-size: contain;
+    background-position: right;
+    background-size: 20px 20px
+}
+
+.file::before {
+    content: '';
+    display: table;
+    position: absolute;
+    left: -55px;
+    top: 2px;
+    width: 50px;
+    height: 27px;
+    border-bottom: 1px dashed @color-primary;
+
+    background: url(/assets/images/img-file.png) no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    background-size: 20px 20px;
+    background-position: right;
+}
+
+.btn-plus::before {
+    content: '';
+    display: table;
+    width: 50px;
+    height: 27px;
+    position: absolute;
+    left: -55px;
+    top: 2px;
+
+    background-position: right;
+    border-bottom: 1px dashed @color-primary;
+}
